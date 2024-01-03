@@ -11,15 +11,16 @@ confinement: strict
 
 apps:
   pocketses:
-    command: hello.sh
-  bash:
-    command: usr/local/bin/bash
+    command: bin/pocketses-cli
+    plugs:
+      - system-observe
+      - network-observe
 
 parts:
   pocketses:
-    source: pocketses
-    plugin: dump
-
-  gnu-bash:
-      source: http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
-      plugin: autotools
+    plugin: python
+    source: .
+    parse-info:
+      - "setup.py"
+    python-requirements:
+      - requirements.txt
