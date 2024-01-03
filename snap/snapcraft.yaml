@@ -1,23 +1,23 @@
-name: hello-snaps
+name: pocketses
 base: core22
 version: '0.1'
 license: MIT
-summary: Hello World!
+summary: What has it got in its pocketses, precious?!
 description: |
   Learning about Snaps & Snapcraft
 
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
 
 apps:
-  hello-snaps:
+  pocketses:
     command: hello.sh
   bash:
     command: usr/local/bin/bash
 
 parts:
-  hello:
-    source: hello
+  pocketses:
+    source: pocketses
     plugin: dump
 
   gnu-bash:

@@ -1,4 +1,6 @@
-# hello-snaps
+# pocketses
+
+> What has it got in its pocketses, precious?!
 
 Learning about Snaps &amp; Snapcraft
 
