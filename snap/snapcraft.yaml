@@ -1,0 +1,25 @@
+name: hello-snaps
+base: core22
+version: '0.1'
+license: MIT
+summary: Hello World!
+description: |
+  Learning about Snaps & Snapcraft
+
+grade: devel
+confinement: devmode
+
+apps:
+  hello-snaps:
+    command: hello.sh
+  bash:
+    command: usr/local/bin/bash
+
+parts:
+  hello:
+    source: hello
+    plugin: dump
+
+  gnu-bash:
+      source: http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+      plugin: autotools
