@@ -1,4 +1,4 @@
-VERSION := $(shell yq '.version' snap/snapcraft.yaml)
+VERSION := $(shell yq ".version" snap/snapcraft.yaml)
 
 .PHONY: build
 build:

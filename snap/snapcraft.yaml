@@ -1,6 +1,7 @@
 name: pocketses
 base: core22
-version: "0.2.0"
+version: "0.3.0"
+icon: snap/gui/gollum.png
 license: MIT
 summary: What has it got in its pocketses, precious?!
 description: |
@@ -22,6 +23,7 @@ apps:
       - system-observe
       - network-observe
       - network-bind
+      - snapd-control
 
 parts:
   pocketses:

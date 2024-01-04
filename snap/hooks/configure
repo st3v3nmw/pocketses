@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+DEFAULT_PORT="8888"
+DEFAULT_INTERVAL="60"
+
+port="$(snapctl get port)"
+if [ -z "$port" ]; then
+    port="$DEFAULT_PORT"
+fi
+
+interval="$(snapctl get interval)"
+if [ -z "$interval" ]; then
+    interval="$DEFAULT_INTERVAL"
+fi
+
+snapctl set publisher.port="$port"
+snapctl set collector.interval="$interval"

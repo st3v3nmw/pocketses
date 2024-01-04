@@ -6,6 +6,7 @@ from psutil._common import bytes2human
 
 
 def collector(port: int):
+    """Collect metrics and send them to the publisher service."""
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(("localhost", port))
 
@@ -20,6 +21,7 @@ def collector(port: int):
 
 
 def cpu_stats() -> dict:
+    """Get CPU stats."""
     freq = psutil.cpu_freq()
     count = psutil.cpu_count()
     per_cpu = psutil.cpu_percent(interval=1, percpu=True)
@@ -38,6 +40,7 @@ def cpu_stats() -> dict:
 
 
 def mem_stats() -> dict:
+    """Get memory stats."""
     virtual = psutil.virtual_memory()
     swap = psutil.swap_memory()
     return {
@@ -55,6 +58,7 @@ def mem_stats() -> dict:
 
 
 def net_stats() -> dict:
+    """Get network stats."""
     counters = psutil.net_io_counters()
     nics = {
         nic: [addr.address for addr in addrs if addr.family == socket.AF_INET]
