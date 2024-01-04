@@ -11,6 +11,11 @@ Learning about Snaps &amp; Snapcraft
 
 ## Development
 
+Make sure the following are installed:
+
+- [Snapcraft](https://snapcraft.io/docs/snapcraft-overview)
+- [yq](https://github.com/mikefarah/yq)
+
 - `make build`: Build the local snap
 - `make install`: Install the snap you just built
 
@@ -22,3 +27,4 @@ Learning about Snaps &amp; Snapcraft
 - [The python snap plugin](https://snapcraft.io/docs/python-plugin)
 - [Python command line scripts](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html)
 - [Snap interface management](https://snapcraft.io/docs/interface-management)
+- [Build snaps from GitHub](https://snapcraft.io/docs/build-from-github)
