@@ -9,7 +9,7 @@ setup(
     license="MIT",
     python_requires=">=3.10",
     packages=["pocketses"],
-    entry_points = {
-        "console_scripts": ["pocketses-cli=pocketses.cli:cli"],
-    }
+    entry_points={
+        "console_scripts": ["pocketses-cli=pocketses.main:main"],
+    },
 )

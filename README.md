@@ -16,8 +16,10 @@ Make sure the following are installed:
 - [Snapcraft](https://snapcraft.io/docs/snapcraft-overview)
 - [yq](https://github.com/mikefarah/yq)
 
-- `make build`: Build the local snap
-- `make install`: Install the snap you just built
+Run:
+
+- `make build`: to build the local snap
+- `make install`: to install the snap you just built
 
 ## Resources
 
