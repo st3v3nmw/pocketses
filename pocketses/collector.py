@@ -7,7 +7,7 @@ from psutil._common import bytes2human
 
 def collector(port: int):
     """Collect metrics and send them to the publisher service."""
-    print("Collecting and ending stats...")
+    print("Collecting and sending stats...")
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(("localhost", port))

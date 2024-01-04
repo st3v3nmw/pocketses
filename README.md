@@ -13,11 +13,11 @@ This is a project I'm using to learn snaps, snapcraft, and landscape. It runs th
 
 "Topics" covered:
 
-- [x] Snap & snapcraft basics
 - [x] Python snap plugin
 - [x] Interfaces
-- [x] Pub/Sub with the twisted framework
+- [x] Pub/Sub with the [Twisted](https://twisted.org/) framework
 - [x] Remote builds
+- [x] Snap configuration
 - [x] Hooks
 - [x] Snapd REST API
 - [ ] Installation on a virtual device with landscape
@@ -54,7 +54,7 @@ Connect the snap to the `system-observe`, `network-observe` & `snapd-control` in
 As mentioned before, this snap has to be run as root since we need to connect to the `/run/snapd.socket` socket through the `snapd-control` interface. Yes, we should probably switch to the snapctl tool but parsing the output seems unwieldy (plus HTTP/JSON is convenient).
 
 ```console
-(venv) ~/Projects/pocketses ‹ main*› » sudo pocketses --help                                                                                                                             130 ↵
+$ sudo pocketses --help
 usage: pocketses-cli [-h] [--port PORT] [--interval INTERVAL]
 
 options:
@@ -66,17 +66,17 @@ options:
 On one terminal, start pocketses:
 
 ```console
-(venv) ~/Projects/pocketses ‹ main*› » sudo pocketses
-Collecting and ending stats...
+$ sudo pocketses
+Collecting and sending stats...
 Starting publisher...
-Collecting and ending stats...
-Collecting and ending stats...
+Collecting and sending stats...
+Collecting and sending stats...
 ```
 
 On two separate terminals, subscribe with two clients:
 
 ```console
-(venv) ~/Projects/pocketses ‹ main*› » telnet localhost 8888                             127 ↵
+$ telnet localhost 8888
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
