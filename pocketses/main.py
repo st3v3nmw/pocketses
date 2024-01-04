@@ -31,4 +31,5 @@ def main() -> None:
     collector_task = task.LoopingCall(collector, args.port)
     collector_task.start(args.interval)
 
+    print("Starting publisher...")
     reactor.run()
