@@ -6,12 +6,12 @@
 
 <br/>
 
-This is a project I'm using to learn snaps, snapcraft, and landscape. It runs the following "services":
+This is a project I'm using to learn snaps, Snapcraft, Ubuntu Core, & landscape. It runs the following "services":
 
 - A collector to pull CPU, memory, and network statistics from the host, and
 - A publisher to push the metrics to all subscribed clients
 
-"Topics" covered:
+Areas covered:
 
 - [x] Python snap plugin
 - [x] Interfaces
@@ -20,7 +20,7 @@ This is a project I'm using to learn snaps, snapcraft, and landscape. It runs th
 - [x] Snap configuration
 - [x] Hooks
 - [x] Snapd REST API
-- [ ] Installation on a virtual device with landscape
+- [x] Model assertions
 
 ### Etymology
 
@@ -67,7 +67,6 @@ On one terminal, start pocketses:
 
 ```console
 $ sudo pocketses
-Collecting and sending stats...
 Starting publisher...
 Collecting and sending stats...
 Collecting and sending stats...
@@ -88,8 +87,31 @@ You should see some output after the interval elapses (default interval = 60 sec
 
 ## Bugs/Features
 
-1. The collector starts before the publisher (as seen in the output above)
-2. Subscribed clients can "publish" and this output is echoed back too all clients (sender included lol)
+1. Subscribed clients can "publish" and this output is echoed back too all clients (sender included lol)
+
+## Upgrading Ubuntu Core
+
+- Get the model assertion: `snap known --remote model series=16 brand-id=canonical model=ubuntu-core-22-amd64 > uc22.model`
+- Start the upgrade: `sudo snap remodel uc22.model`
+- Use `snap changes` & `snap change <change-id>` to monitor the process
+
+Count your lucky stars if it passes. Mine didn't:
+
+```console
+$ snap change 29
+Status  Spawn               Ready               Summary
+Done    today at 09:04 UTC  today at 09:11 UTC  Request new device serial
+Done    today at 09:04 UTC  today at 09:11 UTC  Prepare remodeling
+Done    today at 09:04 UTC  today at 09:11 UTC  Ensure prerequisites for "pc-kernel" are available
+Undone  today at 09:04 UTC  today at 09:11 UTC  Download snap "pc-kernel" (1540) from channel "22/stable"
+Done    today at 09:04 UTC  today at 09:11 UTC  Fetch and check assertions for snap "pc-kernel" (1540)
+
+[...]
+
+Mount snap "pc" (146)
+
+2024-01-05T09:09:54Z ERROR cannot remodel to an incompatible gadget: incompatible layout change: incompatible structure #4 ("ubuntu-save") change: new valid structure size range [33554432, 33554432] is not compatible with current ([16777216, 16777216])
+```
 
 ## Resources
 
@@ -107,3 +129,8 @@ You should see some output after the interval elapses (default interval = 60 sec
 - [Snapd REST API](https://snapcraft.io/docs/snapd-api)
 - [Snapcraft.yaml reference](https://snapcraft.io/docs/snapcraft-yaml-reference)
 - [Using the snapctl tool](https://snapcraft.io/docs/using-snapctl)
+- [Install Ubuntu Core on KVM](https://ubuntu.com/download/kvm)
+- [Upgrade Ubuntu Core](https://ubuntu.com/core/docs/upgrade)
+- [Assertions](https://ubuntu.com/core/docs/reference/assertions)
+- [Model assertion](https://ubuntu.com/core/docs/reference/assertions/model)
+- [Sign a model assertion](https://ubuntu.com/core/docs/sign-model-assertion)

@@ -29,7 +29,7 @@ def main() -> None:
     reactor.listenTCP(args.port, factory)
 
     collector_task = task.LoopingCall(collector, args.port)
-    collector_task.start(args.interval)
+    collector_task.start(args.interval, now=False)
 
     print("Starting publisher...")
     reactor.run()
